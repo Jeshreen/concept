@@ -56,7 +56,6 @@ $(function () {
             var selectedMonth = $('#month-dropdown :selected').val()
 
             for (var i = 0; i < lines.length; i++) {
-                console.log(lines[i]);
                 values = lines[i].split(',');
                 daily_arr = { "month": values[0], "day": values[1], "count": values[2] };
                 if (daily_arr["month"] == selectedMonth) {
@@ -121,51 +120,53 @@ $(function () {
     });
 
     //extra2
-    jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/e2-hive1.csv', function (data) {
-        var lines = data.split('\n');
-        var data = [];
-        for (var i = 0; i < lines.length; i++) {
-            values = lines[i].split(',');
-            data.push([values[0], values[1]]);
-        }
-        console.log(data);
-        var chart = c3.generate({
-            bindto: "#c3chart_category",
-            data: {
-                columns: [
-                    ['Men', 100],
-                    ['Women', 80],
-                    ['Accessories', 50],
-                    ['Children', 40],
-                    ['Apperal', 20],
+    var chart = c3.generate({
+        bindto: "#c3chart_category",
+        data: {
+            columns: [
+                ['AA', 725984],
+                ['AS', 172521],
+                ['B6', 267048],
+                ['DL', 875881],
+                ['EV', 571977],
+                ['F9', 90836],
+                ['HA', 76272],
+                ['MQ', 294632],
+                ['NK', 117379],
+                ['OO', 588353],
+                ['UA', 515723],
+                ['US', 198715],
+                ['VX', 61903],
+                ['WN', 1261855],
+            ],
+            type: 'donut',
 
-                ],
-                type: 'donut',
+            onclick: function (d, i) { console.log("onclick", d, i); },
+            onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+            onmouseout: function (d, i) { console.log("onmouseout", d, i); },
 
-                onclick: function (d, i) { console.log("onclick", d, i); },
-                onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-                onmouseout: function (d, i) { console.log("onmouseout", d, i); },
-
-                colors: {
-                    Men: '#5969ff',
-                    Women: '#ff407b',
-                    Accessories: '#25d5f2',
-                    Children: '#ffc750',
-                    Apperal: '#2ec551',
-
-
-
-                }
-            },
-            donut: {
-                label: {
-                    show: false
-                }
-            },
-
-
-
-        });
+            colors: {
+                AA: '#964059',
+                AS: '#d96681',
+                B6: '#a35f8c',
+                DL: '#603860',
+                EV: '#765497',
+                F9: '#b895d1',
+                HA: '#cbc0fa',
+                MQ: '#5260ae',
+                NK: '#95bef9',
+                OO: '#a8c572',
+                UA: '#495d28',
+                US: '#fca034',
+                VX: '#fca034',
+                WN: '#d0671c',
+            }
+        },
+        donut: {
+            label: {
+                show: false
+            }
+        },
     });
 
 });
