@@ -1,6 +1,4 @@
 $(function () {
-
-
     //question 1
     jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/q1-hadoop.txt', function (data) {
         var lines = data.split('\n');
