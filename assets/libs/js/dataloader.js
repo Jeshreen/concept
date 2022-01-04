@@ -39,5 +39,13 @@ $(function() {
             question2.appendChild(row); 
         }
     });
+
+    //question3
+    jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/q3-spark1.csv',function(data){
+        var lines = data.split('\n');
+     
+        var val = parseFloat(lines).toFixed(2)+"%";
+        $("#question3").html(val)
+    })
 });
 

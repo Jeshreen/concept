@@ -6744,7 +6744,10 @@ form.dropzone {
     height: 400px;
 }
 
-
+.percentage-display{
+    font-size: 80px;
+    color: cadetblue;
+}
 /*----------------------
 9.2 Vector Map
 ---------------------------*/
