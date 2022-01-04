@@ -47,5 +47,28 @@ $(function() {
         var val = parseFloat(lines).toFixed(2)+"%";
         $("#question3").html(val)
     })
+
+    //extra 1
+    jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/e1-hive3.txt',function(data){
+        var lines = data.split('\n');
+        for (var i = 0; i < lines.length; i++) {
+            var row = document.createElement("tr");
+            var rowContent = lines[i].split(",");
+            for (var col = 0; col < rowContent.length; col++) {
+
+                //create td element 
+                var cellElement = document.createElement("td");
+                //add a row element as a node for table
+                var cellContent = document.createTextNode(rowContent[col]);
+                cellElement.appendChild(cellContent);
+
+                //append row child
+                row.appendChild(cellElement);
+            }
+            console.log(row);
+            //append table contents
+            extra1.appendChild(row); 
+        }
+    })
 });
 
