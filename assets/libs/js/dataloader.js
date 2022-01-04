@@ -49,7 +49,7 @@ $(function() {
     })
 
     //extra 1
-    jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/e1-hive3.txt',function(data){
+    jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/e1-hive3.csv',function(data){
         var lines = data.split('\n');
         for (var i = 0; i < lines.length; i++) {
             var row = document.createElement("tr");
@@ -65,7 +65,6 @@ $(function() {
                 //append row child
                 row.appendChild(cellElement);
             }
-            console.log(row);
             //append table contents
             extra1.appendChild(row); 
         }
