@@ -20,18 +20,23 @@ $(function() {
 
     //question 2
     jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/q2-hive2.csv',function (data) {
-        console.log(data);
-        $.each(data, function(index, row){
-            html += '<tr>';
-            $.each(row, function(index, colData){
-                html += '<td>';
-                html += colData;
-                html += '</td>';
-            });
-            html += '</tr>';
-        });
-        console.log(html);
-        $("#question2").append(html);
+        var lines = data.split('\n');
+        for (var i = 0; i < lines.length; i++) {
+            var row = document.createElement("tr");
+            var rowContent = lines[i].split(",");
+            for (var col = 0; col < rowContent.length; col++) {
+                //create td element 
+                var cellElement = document.createElement("td");
+                //add a row element as a node for table
+                var cellContent = document.createTextNode(rowContent[col]);
+                cellElement.appendChild(cellContent);
+
+                //append row child
+                row.appendChild(cellElement);
+            }
+            //append table contents
+            question2.appendChild(row); 
+        }
     });
 });
 
