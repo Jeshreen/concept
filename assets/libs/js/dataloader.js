@@ -25,6 +25,7 @@ $(function() {
             var row = document.createElement("tr");
             var rowContent = lines[i].split(",");
             for (var col = 0; col < rowContent.length; col++) {
+
                 //create td element 
                 var cellElement = document.createElement("td");
                 //add a row element as a node for table
