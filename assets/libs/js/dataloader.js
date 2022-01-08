@@ -42,7 +42,25 @@ $(function () {
         var lines = data.split('\n');
 
         var val = parseFloat(lines).toFixed(2) + "%";
-        $("#question3").html(val)
+        $("#question3").html(val);
+
+        if ($('#pie_chart').length) {
+            var ctx = document.getElementById("pie_chart");
+
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ["More than 7", "Less than 7"],
+                    datasets: [{
+                        backgroundColor: [
+                            "#4BC0C0",
+                            "#FF6384"
+                        ],
+                        data: [118,82],
+                    }]
+                }
+            });
+        }
     });
 
     //question 4
@@ -94,13 +112,13 @@ $(function () {
         chart_generation();
     });
 
-    jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/q4-spark2-1.csv',function(data){
+    jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/q4-spark2-1.csv', function (data) {
         var lines = data.split('\n');
         monthly_arr = [];
-        values_arr =[];
+        values_arr = [];
         for (var i = 0; i < lines.length; i++) {
             values = lines[i].split(',');
-            if(values[0] != 'MONTH'){
+            if (values[0] != 'MONTH') {
                 monthly_arr.push(values[0]);
                 values_arr.push(values[1])
             }
@@ -115,7 +133,7 @@ $(function () {
                     labels: monthly_arr,
                     datasets: [{
                         label: "Flights over a Month time",
-                        backgroundColor: "rgba(89, 105, 255,0.5)",
+                        backgroundColor: "#ff9ebc",
                         borderColor: "rgba(89, 105, 255,0.7)",
                         data: values_arr
                     }]
