@@ -77,7 +77,7 @@ $(function () {
                     data: {
                         labels: days,
                         datasets: [{
-                            label: "Delayed flights",
+                            label: "Daily Flights",
                             backgroundColor: "rgba(89, 105, 255,0.5)",
                             borderColor: "rgba(89, 105, 255,0.7)",
                             data: day_val
@@ -94,6 +94,35 @@ $(function () {
         chart_generation();
     });
 
+    jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/q4-spark2-1.csv',function(data){
+        var lines = data.split('\n');
+        monthly_arr = [];
+        values_arr =[];
+        for (var i = 0; i < lines.length; i++) {
+            values = lines[i].split(',');
+            if(values[0] != 'MONTH'){
+                monthly_arr.push(values[0]);
+                values_arr.push(values[1])
+            }
+        }
+
+        if ($('#month-chart').length) {
+            var ctx = document.getElementById("month-chart");
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: monthly_arr,
+                    datasets: [{
+                        label: "Flights over a Month time",
+                        backgroundColor: "rgba(89, 105, 255,0.5)",
+                        borderColor: "rgba(89, 105, 255,0.7)",
+                        data: values_arr
+                    }]
+                }
+            });
+        }
+    })
     //extra 1
     jQuery.get('https://raw.githubusercontent.com/Jeshreen/concept/master/assets/data/e1-hive3.csv', function (data) {
         var lines = data.split('\n');
